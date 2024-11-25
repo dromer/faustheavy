@@ -1,52 +1,5 @@
-/* ------------------------------------------------------------
-name: "faustcode"
-Code generated with Faust 2.54.9 (https://faust.grame.fr)
-Compilation options: -lang c -es 1 -mcd 16 -single -ftz 0
------------------------------------------------------------- */
+#include <faustcode.h>
 
-#ifndef  __mydsp_H__
-#define  __mydsp_H__
-
-#ifndef FAUSTFLOAT
-#define FAUSTFLOAT float
-#endif
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#if defined(_WIN32)
-#define RESTRICT __restrict
-#else
-#define RESTRICT __restrict__
-#endif
-
-#include <math.h>
-#include <stdint.h>
-#include <stdlib.h>
-
-static float mydsp_faustpower2_f(float value) {
-	return value * value;
-}
-
-#ifndef FAUSTCLASS
-#define FAUSTCLASS mydsp
-#endif
-
-#ifdef __APPLE__
-#define exp10f __exp10f
-#define exp10 __exp10
-#endif
-
-typedef struct {
-	int fSampleRate;
-	float fConst1;
-	float fConst3;
-	float fConst4;
-	int iRec1[2];
-	float fRec0[3];
-} mydsp;
 
 mydsp* newmydsp() {
 	mydsp* dsp = (mydsp*)calloc(1, sizeof(mydsp));
@@ -56,39 +9,6 @@ mydsp* newmydsp() {
 void deletemydsp(mydsp* dsp) {
 	free(dsp);
 }
-
-// void metadatamydsp(MetaGlue* m) {
-// 	m->declare(m->metaInterface, "compile_options", "-lang c -es 1 -mcd 16 -single -ftz 0");
-// 	m->declare(m->metaInterface, "filename", "faustcode.dsp");
-// 	m->declare(m->metaInterface, "filters.lib/fir:author", "Julius O. Smith III");
-// 	m->declare(m->metaInterface, "filters.lib/fir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
-// 	m->declare(m->metaInterface, "filters.lib/fir:license", "MIT-style STK-4.3 license");
-// 	m->declare(m->metaInterface, "filters.lib/iir:author", "Julius O. Smith III");
-// 	m->declare(m->metaInterface, "filters.lib/iir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
-// 	m->declare(m->metaInterface, "filters.lib/iir:license", "MIT-style STK-4.3 license");
-// 	m->declare(m->metaInterface, "filters.lib/lowpass0_highpass1", "MIT-style STK-4.3 license");
-// 	m->declare(m->metaInterface, "filters.lib/name", "Faust Filters Library");
-// 	m->declare(m->metaInterface, "filters.lib/resonlp:author", "Julius O. Smith III");
-// 	m->declare(m->metaInterface, "filters.lib/resonlp:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
-// 	m->declare(m->metaInterface, "filters.lib/resonlp:license", "MIT-style STK-4.3 license");
-// 	m->declare(m->metaInterface, "filters.lib/tf2:author", "Julius O. Smith III");
-// 	m->declare(m->metaInterface, "filters.lib/tf2:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
-// 	m->declare(m->metaInterface, "filters.lib/tf2:license", "MIT-style STK-4.3 license");
-// 	m->declare(m->metaInterface, "filters.lib/tf2s:author", "Julius O. Smith III");
-// 	m->declare(m->metaInterface, "filters.lib/tf2s:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
-// 	m->declare(m->metaInterface, "filters.lib/tf2s:license", "MIT-style STK-4.3 license");
-// 	m->declare(m->metaInterface, "filters.lib/version", "0.3");
-// 	m->declare(m->metaInterface, "maths.lib/author", "GRAME");
-// 	m->declare(m->metaInterface, "maths.lib/copyright", "GRAME");
-// 	m->declare(m->metaInterface, "maths.lib/license", "LGPL with exception");
-// 	m->declare(m->metaInterface, "maths.lib/name", "Faust Math Library");
-// 	m->declare(m->metaInterface, "maths.lib/version", "2.5");
-// 	m->declare(m->metaInterface, "name", "faustcode");
-// 	m->declare(m->metaInterface, "noises.lib/name", "Faust Noise Generator Library");
-// 	m->declare(m->metaInterface, "noises.lib/version", "0.4");
-// 	m->declare(m->metaInterface, "platform.lib/name", "Generic Platform Library");
-// 	m->declare(m->metaInterface, "platform.lib/version", "0.3");
-// }
 
 int getSampleRatemydsp(mydsp* dsp) {
 	return dsp->fSampleRate;
@@ -144,11 +64,6 @@ void initmydsp(mydsp* dsp, int sample_rate) {
 	instanceInitmydsp(dsp, sample_rate);
 }
 
-// void buildUserInterfacemydsp(mydsp* dsp, UIGlue* ui_interface) {
-// 	ui_interface->openVerticalBox(ui_interface->uiInterface, "faustcode");
-// 	ui_interface->closeBox(ui_interface->uiInterface);
-// }
-
 void computemydsp(mydsp* dsp, int count, FAUSTFLOAT** RESTRICT inputs, FAUSTFLOAT** RESTRICT outputs) {
 	FAUSTFLOAT* output0 = outputs[0];
 	/* C99 loop */
@@ -164,9 +79,3 @@ void computemydsp(mydsp* dsp, int count, FAUSTFLOAT** RESTRICT inputs, FAUSTFLOA
 		}
 	}
 }
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

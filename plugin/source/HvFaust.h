@@ -2,7 +2,7 @@
 #define _HEAVY_SIGNAL_FAUST_H_
 
 #include "HvHeavyInternal.h"
-#include "faustcode.c"
+#include "faustcode.h"
 
 
 #ifdef __cplusplus
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 typedef struct SignalFaust {
-    mydsp * faust;
+    mydsp *faust;
 } SignalFaust;
 
 hv_size_t sFaust_init(SignalFaust *o, double samplerate);
