@@ -174,7 +174,7 @@ int Heavy_Untitled::process(float **inputBuffers, float **outputBuffers, int n) 
 
     // process all signal functions
     __hv_faust_f(&faust1, VIf(I0), VOf(O0));
-    __hv_faust_f(&faust1, VIf(I1), VOf(O1));
+    __hv_faust_f(&faust2, VIf(I1), VOf(O1));
 
     // save output vars to output buffer
     __hv_store_f(outputBuffers[0]+n, VIf(O0));
